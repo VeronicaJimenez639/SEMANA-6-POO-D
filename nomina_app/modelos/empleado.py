@@ -57,5 +57,26 @@ class EmpleadoTiempoCompleto(Empleado):
             f"Tipo: Tiempo Completo, Base: {self.__salario_base}, Bono: {self.bono}."
         )
     
-    
+class EmpleadoPorHoras(Empleado):
+    """
+    Clase hija: EmpleadoPorHoras hereda de Empleado.
+
+    Encapsulación:
+    - __tarifa_hora es privada para controlar modificaciones.
+    """
+    def __init__(self, nombre: str, cedula: str, tarifa_hora: float, horas_trabajadas: int):    
+        super().__init__(nombre, cedula)              # Llama al constructor de la clase padre (Empleado)
+        self.__tarifa_hora = tarifa_hora              # Atributo privado: tarifa por hora
+        self.horas_trabajadas = horas_trabajadas      # Atributo público: horas trabajadas
+
+    # Getter: acceso controlado a la tarifa
+    def obtener_tarifa(self) -> float:
+        return self.__tarifa_hora
+
+    # Setter: modifica la tarifa con validación
+    def cambiar_tarifa(self, nueva_tarifa: float) -> None:
+        if nueva_tarifa > 0:
+            self.__tarifa_hora = nueva_tarifa
+        else:
+            print("La tarifa debe ser mayor que 0.")    
 
