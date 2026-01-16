@@ -46,3 +46,16 @@ class EmpleadoTiempoCompleto(Empleado):
         else:
             print("El salario debe ser mayor que 0.")
 
+    # Polimorfismo (sobreescritura):
+    def calcular_pago(self) -> float:          # Para tiempo completo, el pago es salario base + bono
+        return self.__salario_base + self.bono
+
+    # Sobrescribe el método para mostrar información más completa
+    def mostrar_informacion(self) -> str:
+        return (
+            f"{super().mostrar_informacion()}, "
+            f"Tipo: Tiempo Completo, Base: {self.__salario_base}, Bono: {self.bono}."
+        )
+    
+    
+
