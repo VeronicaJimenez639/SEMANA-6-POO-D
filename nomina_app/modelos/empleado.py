@@ -19,5 +19,8 @@ class Empleado:
 
     def calcular_pago(self) -> float: # Método base: se sobrescribe en las clases hijas para calcular el pago real
         return 0.0
+    
+    def mostrar_informacion(self) -> str: # Método para mostrar información básica del empleado
+        return f"Empleado: {self.nombre}, Cédula: {self.cedula}"    
 
 
