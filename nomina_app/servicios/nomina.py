@@ -23,4 +23,20 @@ class Nomina:
         for e in self.empleados:            # Itera sobre la lista e imprime la información de cada empleado
             print(e.mostrar_informacion())  # Llama al método mostrar_informacion() de cada empleado
 
+    def pagar_todos(self) -> None:
+        """
+        Calcula e imprime el pago individual de cada empleado y el total general.
 
+        POLIMORFISMO:
+        - Se utiliza el mismo método calcular_pago() para todos.
+        - Cada empleado calcula su pago según su clase (sobreescritura).
+        """
+        total = 0.0  # Acumulador del total de la nómina
+
+        for e in self.empleados:
+            pago = e.calcular_pago()  # Pago calculado según el tipo de empleado
+            total += pago             # Se suma al total general
+            print(f"{e.nombre} cobra: ${pago:.2f}")
+
+        # Al final se muestra el total a pagar en la nómina
+        print(f"Total a pagar en nómina: ${total:.2f}")
