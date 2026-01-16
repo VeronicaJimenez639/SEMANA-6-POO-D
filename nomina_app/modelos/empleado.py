@@ -23,4 +23,26 @@ class Empleado:
     def mostrar_informacion(self) -> str: # Método para mostrar información básica del empleado
         return f"Empleado: {self.nombre}, Cédula: {self.cedula}"    
 
+class EmpleadoTiempoCompleto(Empleado):
+    """
+    Clase hija: EmpleadoTiempoCompleto hereda de Empleado.
+
+    Encapsulación:
+    - __salario_base es privado, por lo que se accede/modifica mediante métodos.
+    """
+    def __init__(self, nombre: str, cedula: str, salario_base: float, bono: float = 0.0):
+        super().__init__(nombre, cedula)                # super() llama al constructor de la clase padre (Empleado)
+        self.__salario_base = salario_base              # Atributo privado: salario base
+        self.bono = bono                                # Atributo público: bono adicional
+
+    # Getter: permite obtener el salario base de forma controlada
+    def obtener_salario_base(self) -> float:            
+        return self.__salario_base
+
+    # Setter: permite cambiar el salario base con validación
+    def cambiar_salario_base(self, nuevo_salario: float) -> None:        
+        if nuevo_salario > 0:                                            
+            self.__salario_base = nuevo_salario                           
+        else:
+            print("El salario debe ser mayor que 0.")
 
