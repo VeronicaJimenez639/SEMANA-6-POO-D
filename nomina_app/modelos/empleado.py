@@ -78,5 +78,21 @@ class EmpleadoPorHoras(Empleado):
         if nueva_tarifa > 0:
             self.__tarifa_hora = nueva_tarifa
         else:
-            print("La tarifa debe ser mayor que 0.")    
+            print("La tarifa debe ser mayor que 0.")
+
+    # Polimorfismo (sobreescritura):
+    # Para pago por horas, el pago es tarifa * horas
+    def calcular_pago(self) -> float:
+        # Validación simple: si las horas son negativas, devuelve 0
+        if self.horas_trabajadas < 0:
+            return 0.0
+
+        return self.__tarifa_hora * self.horas_trabajadas
+
+    # Sobrescribe el método para mostrar información específica del tipo por horas
+    def mostrar_informacion(self) -> str:
+        return (
+            f"{super().mostrar_informacion()}, "
+            f"Tipo: Por Horas, Tarifa: {self.__tarifa_hora}, Horas: {self.horas_trabajadas}"
+        )    
 
